@@ -12,6 +12,9 @@ export default function lasso() {
         targetArea,
         on = {start: function(){}, draw: function(){}, end: function(){}, init: function(){}};
 
+    let pressedKey;
+
+
     // Function to execute on call
     function lasso(_this) {
 
@@ -53,6 +56,10 @@ export default function lasso() {
         targetArea.call(dragAction);
 
         on.init();
+
+        document.addEventListener('keydown', event => {
+            pressedKey = event.key;
+        });
 
         function dragstart() {
             // Init coordinates
@@ -169,6 +176,10 @@ export default function lasso() {
             on.end();
         }
     }
+
+    lasso.pressedKey = function () {
+        return pressedKey;
+    };
 
     // Set or get list of items for lasso to select
     lasso.items  = function(_) {
