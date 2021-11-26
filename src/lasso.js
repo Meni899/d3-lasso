@@ -10,7 +10,7 @@ export default function lasso() {
         isPathClosed = false,
         hoverSelect = true,
         targetArea,
-        on = {start: function(){}, draw: function(){}, end: function(){}};
+        on = {start: function(){}, draw: function(){}, end: function(){}, init: function(){}};
 
     // Function to execute on call
     function lasso(_this) {
@@ -51,6 +51,8 @@ export default function lasso() {
 
         // Call drag
         targetArea.call(dragAction);
+
+        on.init();
 
         function dragstart() {
             // Init coordinates
@@ -242,7 +244,7 @@ export default function lasso() {
     lasso.on = function(type,_) {
         if(!arguments.length) return on;
         if(arguments.length===1) return on[type];
-        let types = ["start","draw","end"];
+        let types = ["start","draw","end","init"];
         if(types.indexOf(type)>-1) {
             on[type] = _;
         }
