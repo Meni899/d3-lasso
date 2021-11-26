@@ -12,7 +12,7 @@ export default function lasso() {
         targetArea,
         on = {start: function(){}, draw: function(){}, end: function(){}, init: function(){}};
 
-    let pressedKey;
+    let pressedKey = null;
 
 
     // Function to execute on call
@@ -59,6 +59,10 @@ export default function lasso() {
 
         document.addEventListener('keydown', event => {
             pressedKey = event.key;
+        });
+
+        document.addEventListener('keyup', event => {
+            pressedKey = null;
         });
 
         function dragstart() {
