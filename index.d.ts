@@ -1,6 +1,6 @@
 export { lasso };
 
-type LassoType = {
+export type LassoType = {
     items: (selection?: any[]) => LassoType;
     possibleItems: (selection?: any[]) => LassoType;
     notPossibleItems: (selection?: any[]) => LassoType;
